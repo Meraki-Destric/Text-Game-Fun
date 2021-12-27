@@ -1,0 +1,40 @@
+.mapTile {
+    display: inline-block;
+
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 130px;
+    padding: 10px 0;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    border-radius: 0.1em;
+    transition: 0.5s;
+    box-sizing: border-box;
+    border: 0;
+}
+
+#map-grid {
+    background-color: #2b58a1;
+    text-align: center;
+}
+
+#active {
+    background-color: #112b55;
+}
+
+#inactive {
+    background-color: #2b58a1;
+}
+
+#occupied {
+    background-color: #8341af;
+}
+
+#visible {
+    visibility: visible;
+}
+
+#invisible {
+    visibility: hidden;
+}
