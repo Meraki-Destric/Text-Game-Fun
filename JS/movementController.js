@@ -18,7 +18,9 @@ function movementFunctionality() {
             }
             // Check if upper tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'up')) {
+                moveCharacter(occupiedRow, occupiedColumn, 'up')
                 console.log("Movement Successful");
+                determineButtonValidity();
                 // Adds in the title for the area and a description
                 assignText();
             } else {
@@ -45,7 +47,9 @@ function movementFunctionality() {
             }
             // Check if right tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'right')) {
+                moveCharacter(occupiedRow, occupiedColumn, 'right')
                 console.log("Movement Successful");
+                determineButtonValidity();
                 // Adds in the title for the area and a description
                 assignText();
             } else {
@@ -72,7 +76,9 @@ function movementFunctionality() {
             }
             // Check if bottom tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'down')) {
+                moveCharacter(occupiedRow, occupiedColumn, 'down')
                 console.log("Movement Successful");
+                determineButtonValidity();
                 // Adds in the title for the area and a description
                 assignText();
             } else {
@@ -99,7 +105,9 @@ function movementFunctionality() {
             }
             // Check if left tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'left')) {
+                moveCharacter(occupiedRow, occupiedColumn, 'left')
                 console.log("Movement Successful");
+                determineButtonValidity();
                 // Adds in the title for the area and a description
                 assignText();
             } else {
@@ -144,7 +152,56 @@ function findTileLocation(string) {
     return string.match(regex);
 }
 
+// Make another function just to check for valid movement
 function checkValidMovement(row, column, direction) {
+    if (direction === 'up') {
+        let nextRow = parseInt(row) - 1;
+        // Checks if the row is valid
+        if ($(`.mapRow${nextRow}`) !== undefined) {
+            if ($(`.mapRow${nextRow}`).children(`.mapCol${column}`).attr('id') === 'active') {
+                return true
+            } else {
+                return false
+            }
+        }
+    } else if (direction === 'right') {
+        let nextCol = parseInt(column) + 1;
+        // Checks if the row is valid
+        if ($(`.mapCol${nextCol}`) !== undefined) {
+            if ($(`.mapRow${row}`).children(`.mapCol${nextCol}`).attr('id') === 'active') {
+                return true
+            } else {
+                return false
+            }
+        }
+    } else if (direction === 'left') {
+        let nextCol = parseInt(column) - 1;
+        // Checks if the row is valid
+        if ($(`.mapCol${nextCol}`) !== undefined) {
+            if ($(`.mapRow${row}`).children(`.mapCol${nextCol}`).attr('id') === 'active') {
+                return true
+            } else {
+                return false
+            }
+        }
+
+    } else if (direction === "down") {
+        let nextRow = parseInt(row) + 1;
+        // Checks if the row is valid
+        if ($(`.mapRow${nextRow}`) !== undefined) {
+            if ($(`.mapRow${nextRow}`).children(`.mapCol${column}`).attr('id') === 'active') {
+                return true
+            } else {
+                return false
+            }
+        }
+
+    } else {
+        console.log("Please input a direction");
+    }
+}
+
+function moveCharacter(row, column, direction) {
     if (direction === 'up') {
         let nextRow = parseInt(row) - 1;
         // Checks if the row is valid
@@ -153,7 +210,7 @@ function checkValidMovement(row, column, direction) {
                 // Moves the character
                 $(`.mapRow${nextRow}`).children(`.mapCol${column}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
-                return true
+                console.log(`Character moved ${direction}`)
             } else {
                 return false
             }
@@ -166,7 +223,7 @@ function checkValidMovement(row, column, direction) {
                 // Moves the character
                 $(`.mapRow${row}`).children(`.mapCol${nextCol}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
-                return true
+                console.log(`Character moved ${direction}`)
             } else {
                 return false
             }
@@ -179,7 +236,7 @@ function checkValidMovement(row, column, direction) {
                 // Moves the character
                 $(`.mapRow${row}`).children(`.mapCol${nextCol}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
-                return true
+                console.log(`Character moved ${direction}`)
             } else {
                 return false
             }
@@ -193,7 +250,7 @@ function checkValidMovement(row, column, direction) {
                 // Moves the character
                 $(`.mapRow${nextRow}`).children(`.mapCol${column}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
-                return true
+                console.log(`Character moved ${direction}`)
             } else {
                 return false
             }
