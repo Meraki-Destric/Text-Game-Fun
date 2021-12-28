@@ -1,5 +1,5 @@
-const areaName = $(".title")
-const textArea = $(".textArea")
+const areaName = $("#title")
+const textArea = $("#text")
 
 function assignText() {
     let occupiedTile = $("#occupied")
@@ -12,7 +12,6 @@ function assignText() {
     console.log(`Occupied Col is ${occupiedColumn}`)
 
     for (let i = 0; i < currentMap.length; i++) {
-        console.log("cycling");
         if (currentMap[i].row === parseInt(occupiedRow) && currentMap[i].col === parseInt(occupiedColumn)) {
             areaName.text(currentMap[i].name);
             textArea.text(currentMap[i].description);

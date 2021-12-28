@@ -3,6 +3,7 @@ let lastDirection = 'movement';
 
 createMapTiles(5,5);
 colourMap(startingTiles);
+assignText();
 createMovementButtons();
 determineButtonValidity();
 movementFunctionality();
