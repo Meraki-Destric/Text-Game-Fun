@@ -1,5 +1,6 @@
 let tutorialChoices = [{
     id: 0,
+    title: "White Space",
     text: "Here are some options to keep you busy in the meantime",
     options: [{
         text: "Help them make the game",

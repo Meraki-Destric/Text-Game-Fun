@@ -117,6 +117,10 @@ function movementFunctionality() {
     }
 }
 
+function terminateMovementButtons() {
+    $(".movement").remove();
+}
+
 // If a movement is valid, the buttons will show, otherwise they'll be invisible
 function determineButtonValidity() {
     if (movementActive) {

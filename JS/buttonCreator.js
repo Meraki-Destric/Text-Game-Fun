@@ -9,4 +9,5 @@ function createMovementButtons() {
     buttonContainer.append("<button class='left'>Left</button>")
 
     $("#buttonArea").append(buttonContainer)
+    determineButtonValidity();
 }
