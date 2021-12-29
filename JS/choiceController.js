@@ -19,7 +19,7 @@ function showOption(option) {
     return option.requiredState == null || option.requiredState(state)
 }
 
-function selectOption(option) {
+function selectOption(option, choiceNode) {
     // Grabs the ID of the following text
     const nextNodeID = option.nextText
     // If the ID is lower than 0, then it terminates it
@@ -29,7 +29,7 @@ function selectOption(option) {
     // Makes changes to state if any exist
     state = Object.assign(state, option.setState)
     // Begins the next choice area
-    showChoiceNode(nextNodeID);
+    showChoiceNode(nextNodeID, choiceNode);
 }
 
 // Removes the movement buttons and instantiates 
@@ -43,7 +43,7 @@ function showChoiceNode(choiceNodeIndex, choiceNode) {
             // Creates a button and assigns functionality
             let button = $(`<button></button`)
             button.text(option.text)
-            button.on("click", () => selectOption(option))
+            button.on("click", () => selectOption(option, choiceNode))
             choiceBox.append(button);
         }
     })
