@@ -16,9 +16,15 @@ let tutorialChoices = [{
     text: "This is just a secondary section to make sure that functionality exists",
     options: [{
         text: "Text 1",
-        nextText: 2
+        setState: {
+            justStarted: false
+        },
+        nextText: -1
     }, {
         text: "Text 2",
-        nextText: 2
+        setState: {
+            justStarted: false
+        },
+        nextText: -1
     }]
 }]

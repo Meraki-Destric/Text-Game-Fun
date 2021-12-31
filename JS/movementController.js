@@ -26,7 +26,7 @@ function movementFunctionality() {
             } else {
                 console.log("Movement Invalid")
             }
-    
+
         })
         $(".right").on('click', () => {
             let occupiedTile = $("#occupied")
@@ -36,7 +36,7 @@ function movementFunctionality() {
             let occupiedRow = findTileLocation(occupiedTile.parent().attr('class'))
             // Find current column
             let occupiedColumn = findTileLocation(occupiedTile.attr('class'))
-    
+
             // Checks if the player is current on an exit tile
             if (onExitTile()) {
                 // Exits tile
@@ -55,7 +55,7 @@ function movementFunctionality() {
             } else {
                 console.log("Movement Invalid")
             }
-    
+
         })
         $(".down").on('click', () => {
             let occupiedTile = $("#occupied")
@@ -65,7 +65,7 @@ function movementFunctionality() {
             let occupiedRow = findTileLocation(occupiedTile.parent().attr('class'))
             // Find current column
             let occupiedColumn = findTileLocation(occupiedTile.attr('class'))
-    
+
             // Checks if the player is current on an exit tile
             if (onExitTile()) {
                 // Exits tile
@@ -84,7 +84,7 @@ function movementFunctionality() {
             } else {
                 console.log("Movement Invalid")
             }
-    
+
         })
         $(".left").on('click', () => {
             let occupiedTile = $("#occupied")
@@ -94,7 +94,7 @@ function movementFunctionality() {
             let occupiedRow = findTileLocation(occupiedTile.parent().attr('class'))
             // Find current column
             let occupiedColumn = findTileLocation(occupiedTile.attr('class'))
-    
+
             // Checks if the player is current on an exit tile
             if (onExitTile()) {
                 // Exits tile
@@ -205,6 +205,50 @@ function checkValidMovement(row, column, direction) {
     }
 }
 
+function detectChoiceNode(row, column, tileMapName) {
+    let tileIndex = 0;
+    let choiceNodeIndex = 0;
+
+    // Starts looking for the tile index that matches the given row and column values
+    // Else if statement ensures that if no match is found, the program won't continue
+    for (let i = 0; i < tileMapName.length; i++) {
+        console.log(`Tilemap row is ${tileMapName[i].row} and row is ${row}`)
+        console.log(`Tilemap column is ${tileMapName[i].col} and column is ${column}`)
+        if (tileMapName[i].row == row && tileMapName[i].col == column) {
+            tileIndex = i;
+            break;
+        } else if (i === tileMapName.length - 1) {
+            console.log("No Match Found")
+            return;
+        }
+    }
+
+    // Ensures that this doesn't run unless there is a choiceNode to begin with
+    if (tileMapName[tileIndex].choiceNode !== undefined) {
+        // Finds which choice node is currently active
+        for (let i = 0; i < tileMapName[tileIndex].choiceNode.length; i++) {
+            if (tileMapName[tileIndex].choiceNode[i].requiredState) {
+                choiceNodeIndex = i;
+                break;
+            }
+        }
+
+        console.log(`Current state of required state is ${tileMapName[tileIndex].choiceNode[choiceNodeIndex].requiredState}`)
+
+        // Prevents errors by ensuring that the tile index and choice node are valid
+        if (requiredStateConditions(tileMapName, tileIndex, choiceNodeIndex)) {
+            // If valid, starts up the choice node
+            showChoiceNode(0, tileMapName[tileIndex].choiceNode[choiceNodeIndex].node)
+        }
+    }
+}
+
+function requiredStateConditions(tileMap, tileIndex, choiceNodeIndex) {
+    // Checks that the current state matches up with the required state
+    // If it does, then it gets passed through
+    return tileMap[tileIndex].choiceNode[choiceNodeIndex].requiredState(state)
+}
+
 function moveCharacter(row, column, direction) {
     if (direction === 'up') {
         let nextRow = parseInt(row) - 1;
@@ -215,6 +259,9 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${nextRow}`).children(`.mapCol${column}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
+
+                // Checks if there's a choice node
+                detectChoiceNode(nextRow, column, currentMap)
             } else {
                 return false
             }
@@ -228,6 +275,9 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${row}`).children(`.mapCol${nextCol}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
+
+                // Checks if there's a choice node
+                detectChoiceNode(nextCol, column, currentMap)
             } else {
                 return false
             }
@@ -241,6 +291,9 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${row}`).children(`.mapCol${nextCol}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
+
+                // Checks if there's a choice node
+                detectChoiceNode(nextCol, column, currentMap)
             } else {
                 return false
             }
@@ -255,6 +308,9 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${nextRow}`).children(`.mapCol${column}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
+
+                // Checks if there's a choice node
+                detectChoiceNode(nextRow, column, currentMap)
             } else {
                 return false
             }

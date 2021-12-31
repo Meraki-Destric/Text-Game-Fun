@@ -1,5 +1,3 @@
-let state = {}
-
 // Sets up the text for the 
 function assignChoiceText(choiceNodes, id) {
     areaName.text(choiceNodes[id].title)
@@ -10,6 +8,7 @@ function terminateChoice() {
     $("#choiceButtons").remove();
     createMovementButtons();
     determineButtonValidity();
+    movementFunctionality();
     assignText();
 }
 
@@ -22,12 +21,14 @@ function showOption(option) {
 function selectOption(option, choiceNode) {
     // Grabs the ID of the following text
     const nextNodeID = option.nextText
+
+    // Makes changes to state if any exist
+    state = Object.assign(state, option.setState)
+    
     // If the ID is lower than 0, then it terminates it
     if (nextNodeID < 0) {
         return terminateChoice();
     }
-    // Makes changes to state if any exist
-    state = Object.assign(state, option.setState)
     // Begins the next choice area
     showChoiceNode(nextNodeID, choiceNode);
 }
@@ -36,7 +37,7 @@ function selectOption(option, choiceNode) {
 function showChoiceNode(choiceNodeIndex, choiceNode) {
     const node = choiceNode.find(choiceNode => choiceNode.id === choiceNodeIndex)
     terminateChoice();
-    let choiceBox = $("<div id='choiceButtons'>")
+    let choiceBox = $("<div id='choiceButtons'></div>")
 
     node.options.forEach(option => {
         if (showOption(option)) {
