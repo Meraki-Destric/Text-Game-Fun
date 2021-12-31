@@ -1,3 +1,20 @@
+* {
+    background-color: #2b58a1;
+    color: white;
+}
+
+#containerRight {
+    text-align: right;
+}
+
+#containerCenter {
+    text-align: center;
+}
+
+#containerLeft {
+    text-align: left;
+}
+
 .mapTile {
     display: inline-block;
 
@@ -37,4 +54,13 @@
 
 #invisible {
     visibility: hidden;
+}
+
+button {
+    background-color: #8341af;
+    border: 1px solid #8341af;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    color: white;
 }

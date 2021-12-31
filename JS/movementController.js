@@ -21,8 +21,6 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'up')
                 console.log("Movement Successful");
                 determineButtonValidity();
-                // Adds in the title for the area and a description
-                assignText();
             } else {
                 console.log("Movement Invalid")
             }
@@ -50,8 +48,6 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'right')
                 console.log("Movement Successful");
                 determineButtonValidity();
-                // Adds in the title for the area and a description
-                assignText();
             } else {
                 console.log("Movement Invalid")
             }
@@ -79,8 +75,6 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'down')
                 console.log("Movement Successful");
                 determineButtonValidity();
-                // Adds in the title for the area and a description
-                assignText();
             } else {
                 console.log("Movement Invalid")
             }
@@ -108,8 +102,6 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'left')
                 console.log("Movement Successful");
                 determineButtonValidity();
-                // Adds in the title for the area and a description
-                assignText();
             } else {
                 console.log("Movement Invalid")
             }
@@ -260,6 +252,9 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
 
+                // Adds in the title for the area and a description
+                assignText();
+
                 // Checks if there's a choice node
                 detectChoiceNode(nextRow, column, currentMap)
             } else {
@@ -276,6 +271,9 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
 
+                // Adds in the title for the area and a description
+                assignText();
+
                 // Checks if there's a choice node
                 detectChoiceNode(nextCol, column, currentMap)
             } else {
@@ -291,6 +289,9 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${row}`).children(`.mapCol${nextCol}`).attr('id', 'occupied')
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
+
+                // Adds in the title for the area and a description
+                assignText();
 
                 // Checks if there's a choice node
                 detectChoiceNode(nextCol, column, currentMap)
@@ -309,6 +310,10 @@ function moveCharacter(row, column, direction) {
                 $(`.mapRow${row}`).children(`.mapCol${column}`).attr('id', 'active')
                 console.log(`Character moved ${direction}`)
 
+
+                // Adds in the title for the area and a description
+                assignText();
+                
                 // Checks if there's a choice node
                 detectChoiceNode(nextRow, column, currentMap)
             } else {
