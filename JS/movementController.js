@@ -11,10 +11,10 @@ function movementFunctionality() {
             let occupiedColumn = findTileLocation(occupiedTile.attr('class'))
             if (onExitTile()) {
                 // Exits tile
-                exitMap('exit', 'upExit');
+                exitMap('exit', 'up');
             }
             if (onEntranceTile()) {
-                exitMap('entrance', 'upEntrance');
+                exitMap('entrance', 'up');
             }
             // Check if upper tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'up')) {
@@ -38,10 +38,10 @@ function movementFunctionality() {
             // Checks if the player is current on an exit tile
             if (onExitTile()) {
                 // Exits tile
-                exitMap('exit', 'rightExit');
+                exitMap('exit', 'right');
             }
             if (onEntranceTile()) {
-                exitMap('entrance', 'rightEntrance');
+                exitMap('entrance', 'right');
             }
             // Check if right tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'right')) {
@@ -65,10 +65,10 @@ function movementFunctionality() {
             // Checks if the player is current on an exit tile
             if (onExitTile()) {
                 // Exits tile
-                exitMap('exit', 'downExit');
+                exitMap('exit', 'down');
             }
             if (onEntranceTile()) {
-                exitMap('entrance', 'downEntrance');
+                exitMap('entrance', 'down');
             }
             // Check if bottom tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'down')) {
@@ -92,10 +92,10 @@ function movementFunctionality() {
             // Checks if the player is current on an exit tile
             if (onExitTile()) {
                 // Exits tile
-                exitMap('exit', 'leftExit');
+                exitMap('exit', 'left');
             }
             if (onEntranceTile()) {
-                exitMap('entrance', 'leftEntrance');
+                exitMap('entrance', 'left');
             }
             // Check if left tile is active
             if (checkValidMovement(occupiedRow, occupiedColumn, 'left')) {
@@ -139,6 +139,70 @@ function determineButtonValidity() {
         }
         if (checkValidMovement(occupiedRow, occupiedColumn, 'left')) {
             $(".left").attr("id", "visible")
+        }
+        // If the player is on an exit tile, this handles whether the buttons appear or not
+        if (onExitTile()) {
+            if (checkExitPointMovementValidity("up")) {
+                $(".up").attr("id", "visible")
+            }
+            if (checkExitPointMovementValidity("down")) {
+                $(".down").attr("id", "visible")
+            }
+            if (checkExitPointMovementValidity("right")) {
+                $(".right").attr("id", "visible")
+            }
+            if (checkExitPointMovementValidity("left")) {
+                $(".left").attr("id", "visible")
+            }
+        }
+        // If the player is on an entrance tile, this handles whether the buttons appear or not
+        if (onEntranceTile()) {
+            if (checkEntrancePointMovementValidity("up")) {
+                $(".up").attr("id", "visible")
+            }
+            if (checkEntrancePointMovementValidity("down")) {
+                $(".down").attr("id", "visible")
+            }
+            if (checkEntrancePointMovementValidity("right")) {
+                $(".right").attr("id", "visible")
+            }
+            if (checkEntrancePointMovementValidity("left")) {
+                $(".left").attr("id", "visible")
+            }
+        }
+    }
+}
+
+function checkExitPointMovementValidity(direction) {
+    let occupiedTile = $("#occupied")
+    // Find current row
+    let occupiedRow = findTileLocation(occupiedTile.parent().attr('class'))
+    // Find current column
+    let occupiedColumn = findTileLocation(occupiedTile.attr('class'))
+
+    for (let i = 0; i < currentMap.length; i++) {
+        // Checks if the occupied tile is an exit
+        if (currentMap[i].row === parseInt(occupiedRow) && currentMap[i].col === parseInt(occupiedColumn) && $(`.mapCol${occupiedColumn}`).hasClass(`${direction}Exit`)) {
+            return true
+        } else {
+            return false;
+        }
+    }
+}
+
+function checkEntrancePointMovementValidity(direction) {
+    let occupiedTile = $("#occupied")
+    // Find current row
+    let occupiedRow = findTileLocation(occupiedTile.parent().attr('class'))
+    // Find current column
+    let occupiedColumn = findTileLocation(occupiedTile.attr('class'))
+
+    for (let i = 0; i < currentMap.length; i++) {
+        // Checks if the occupied tile is an entrance
+        if (currentMap[i].row === parseInt(occupiedRow) && currentMap[i].col === parseInt(occupiedColumn) && $(`.mapCol${occupiedColumn}`).hasClass(`${direction}Entrance`)) {
+            return true
+        } else {
+            return false;
         }
     }
 }
@@ -387,11 +451,13 @@ function nextMap(direction) {
         createMapTiles(5, 5);
         colourMap(currentMap[currentMap.length - 1].exit);
         assignText();
+        determineButtonValidity();
     } else {
         destroyMap();
         createMapTiles(5, 5);
         colourMap(currentMap[currentMap.length - 1].entrance);
         assignText();
+        determineButtonValidity();
     }
 }
 

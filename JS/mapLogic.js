@@ -25,7 +25,7 @@ function createMapTiles(columns, rows) {
 }
 
 function destroyMap() {
-    $("#map-grid").remove();
+    $("#mapGrid").remove();
 }
 
 // Shows what tiles are available for the player to traverse
