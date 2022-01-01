@@ -1,18 +1,44 @@
 * {
     background-color: #2b58a1;
     color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    display: flex;
 }
 
 #containerRight {
     text-align: right;
+    padding-top: 10px;
+    border-color: aliceblue;
+    border-left: 0.2em solid;
+    background-color: #112b55;
+
 }
 
 #containerCenter {
     text-align: center;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #containerLeft {
     text-align: left;
+    background-color: #112b55;
+    border-color: aliceblue;
+    border-right: 0.2em solid;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+#mapArea {
+    background-color: #2b58a1;
+    padding: 5px;
+    border-radius: 0.5em;
 }
 
 .mapTile {
@@ -29,6 +55,26 @@
     transition: 0.5s;
     box-sizing: border-box;
     border: 0;
+}
+
+#title {
+    background-color: #112b55;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 10px;
+}
+
+#text {
+    margin-top: 10px;
+    background-color: #112b55;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto;
+    width: 500px;
+    height: 300px
 }
 
 #map-grid {
@@ -54,6 +100,12 @@
 
 #invisible {
     visibility: hidden;
+}
+
+.movement {
+    background-color: #112b55;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 button {
