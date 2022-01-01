@@ -108,6 +108,12 @@
     margin-top: 10px;
 }
 
+#choiceButtons {
+    background-color: #112b55;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
 button {
     background-color: #8341af;
     border: 1px solid #8341af;
