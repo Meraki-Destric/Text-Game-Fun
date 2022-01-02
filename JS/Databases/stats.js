@@ -1,0 +1,1 @@
+let damage = 5;

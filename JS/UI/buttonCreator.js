@@ -11,3 +11,12 @@ function createMovementButtons() {
     $("#buttonArea").append(buttonContainer)
     determineButtonValidity();
 }
+
+function createCombatButtons() {
+    let buttonContainer = $('<div class="combat"></div>')
+
+    buttonContainer.append("<button class='fight'>Fight</button>")
+    buttonContainer.append("<button class='flee'>Run</button>")
+
+    $("#buttonArea").append(buttonContainer)    
+}
