@@ -7,5 +7,6 @@ assignText();
 createMovementButtons();
 determineButtonValidity();
 movementFunctionality();
+assignEncounterableEnemies();
 
 console.log("Start up complete")

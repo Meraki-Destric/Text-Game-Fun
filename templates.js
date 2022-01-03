@@ -10,3 +10,14 @@ let exampleTiles = [{
     exitDirection: "Indicates which direction the player must move in to exit the room",
     entranceDirection: "Indicates which direction the player must move in to exit the room",
 }]
+
+let exampleEnemies = [{
+    name: "Name of the enemy",
+    damage: "The damange they deal",
+    health: "The amount of health they possess",
+    dialogue: "Dialogue they exhibit randomly throughout combat",
+    hurtDialogue: "Dialogue they exhibit randomly when damaged",
+    xp: "XP earned from defeating these creatures",
+    deathMessage: "Message that plays when they die",
+    spawnLocation: "The map where this enemy would spawn"
+}]

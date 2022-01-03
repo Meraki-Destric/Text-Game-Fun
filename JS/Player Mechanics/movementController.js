@@ -21,6 +21,7 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'up')
                 console.log("Movement Successful");
                 determineButtonValidity();
+                encounterEnemy();
             } else {
                 console.log("Movement Invalid")
             }
@@ -48,6 +49,7 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'right')
                 console.log("Movement Successful");
                 determineButtonValidity();
+                encounterEnemy();
             } else {
                 console.log("Movement Invalid")
             }
@@ -75,6 +77,7 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'down')
                 console.log("Movement Successful");
                 determineButtonValidity();
+                encounterEnemy();
             } else {
                 console.log("Movement Invalid")
             }
@@ -102,15 +105,12 @@ function movementFunctionality() {
                 moveCharacter(occupiedRow, occupiedColumn, 'left')
                 console.log("Movement Successful");
                 determineButtonValidity();
+                encounterEnemy();
             } else {
                 console.log("Movement Invalid")
             }
         })
     }
-}
-
-function terminateMovementButtons() {
-    $(".movement").remove();
 }
 
 // If a movement is valid, the buttons will show, otherwise they'll be invisible

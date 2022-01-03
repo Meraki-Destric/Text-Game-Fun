@@ -20,3 +20,11 @@ function createCombatButtons() {
 
     $("#buttonArea").append(buttonContainer)    
 }
+
+function createWinButtons() {
+    let buttonContainer = $("<div class='victory'></div>")
+
+    buttonContainer.append("<button class='next'>Next</button>")
+
+    $("#buttonArea").append(buttonContainer)   
+}

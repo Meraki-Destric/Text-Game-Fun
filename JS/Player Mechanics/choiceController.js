@@ -1,15 +1,9 @@
 // Sets up the text for the 
 function assignChoiceText(choiceNodes, id) {
+    let areaName = $("#title")
+    let textArea = $("#text")
     areaName.text(choiceNodes[id].title)
     textArea.text(choiceNodes[id].text)
-}
-
-function terminateChoice() {
-    $("#choiceButtons").remove();
-    createMovementButtons();
-    determineButtonValidity();
-    movementFunctionality();
-    assignText();
 }
 
 function showOption(option) {

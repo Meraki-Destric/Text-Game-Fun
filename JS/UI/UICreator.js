@@ -8,5 +8,16 @@ function createTextArea() {
 }
 
 function createCombatGrounds() {
-    let center = $("#containerCenter")
+    let combatGrounds = $("<div id='combatGround'></div>")
+
+    combatGrounds.append($("<div id='combatRecord'></div>"))
+
+    // Builds up combat log area
+    terminateTextArea();
+    $("#textArea").append(combatGrounds);
+
+    // Creates the buttons for combat and assigns functionality
+    terminateMovementButtons();
+    createCombatButtons();
+    combatButtonFunctionality();
 }

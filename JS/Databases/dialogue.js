@@ -1,7 +1,6 @@
-const areaName = $("#title")
-const textArea = $("#text")
-
 function assignText() {
+    let areaName = $("#title")
+    let textArea = $("#text")
     let occupiedTile = $("#occupied")
     // Find current row
     let occupiedRow = findTileLocation(occupiedTile.parent().attr('class'))

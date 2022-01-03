@@ -77,12 +77,25 @@
     height: 300px
 }
 
+#combatRecord {
+    background-color: #112b55;
+    width: 500px;
+    height: 300px;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
 #map-grid {
     background-color: #2b58a1;
     text-align: center;
 }
 
 #active {
+    background-color: #112b55;
+}
+
+p {
     background-color: #112b55;
 }
 
