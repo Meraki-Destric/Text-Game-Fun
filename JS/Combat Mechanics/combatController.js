@@ -7,6 +7,7 @@ function initiateFight(enemyID) {
     enemyDialogue = enemies[enemyID].dialogue;
     enemyHurtDialogue = enemies[enemyID].hurtDialogue;
     enemyDeathMessage = enemies[enemyID].deathMessage;
+    enemyIntroMessage = enemies[enemyID].startingMessage;
     enemyXP = enemies[enemyID].xp;
 
     // Change UI Elements here
@@ -15,6 +16,8 @@ function initiateFight(enemyID) {
 
 
 function combatButtonFunctionality() {
+
+    $("#combatRecord").text(enemyIntroMessage);
 
     $(".fight").on("click", () => {
         fight();
