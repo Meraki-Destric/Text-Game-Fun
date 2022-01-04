@@ -13,8 +13,10 @@ function encounterEnemy() {
     let encounterTarget = 8;
     let encounterIndex = Math.floor(Math.random() * 10);
 
-    if (encounterIndex >= encounterTarget) {
-        let encounteredEnemy = Math.floor(Math.random() * encounterableEnemies.length)
-        initiateFight(encounteredEnemy);
+    if (!currentlyChatting) {
+        if (encounterIndex >= encounterTarget) {
+            let encounteredEnemy = Math.floor(Math.random() * encounterableEnemies.length)
+            initiateFight(encounteredEnemy);
+        }
     }
 }

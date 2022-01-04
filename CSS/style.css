@@ -99,6 +99,13 @@ p {
     background-color: #112b55;
 }
 
+#health {
+    width: 100px;
+    height: 20px;
+    padding: 10px;
+    background-color: #8341af;
+}
+
 #inactive {
     background-color: #2b58a1;
 }
@@ -113,6 +120,18 @@ p {
 
 #invisible {
     visibility: hidden;
+}
+
+.statArea {
+    text-align: left;
+    background-color: #112b55;
+    display: flex;
+    padding: 20px;
+    width: 200px;
+}
+
+.healthText {
+    margin-right: 10px
 }
 
 .movement {

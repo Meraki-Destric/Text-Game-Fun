@@ -19,6 +19,8 @@ function combatButtonFunctionality() {
     $(".fight").on("click", () => {
         fight();
 
+        updateHealth();
+
         if (enemyHealth <= 0) {
             terminateCombatButtons();
             winCondition();

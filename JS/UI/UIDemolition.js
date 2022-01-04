@@ -4,6 +4,7 @@ function terminateTextArea() {
 }
 
 function terminateChoice() {
+    currentlyChatting = false;
     $("#choiceButtons").remove();
     createMovementButtons();
     determineButtonValidity();

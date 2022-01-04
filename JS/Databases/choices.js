@@ -1,3 +1,5 @@
+let currentlyChatting = false;
+
 let tutorialChoices = [{
     id: 0,
     title: "White Space",

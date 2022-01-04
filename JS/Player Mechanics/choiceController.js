@@ -29,6 +29,7 @@ function selectOption(option, choiceNode) {
 
 // Removes the movement buttons and instantiates 
 function showChoiceNode(choiceNodeIndex, choiceNode) {
+    currentlyChatting = true;
     const node = choiceNode.find(choiceNode => choiceNode.id === choiceNodeIndex)
     terminateChoice();
     let choiceBox = $("<div id='choiceButtons'></div>")
